@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0211EE9D21F49822005C381C /* CoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0211EE9C21F49822005C381C /* CoinViewController.swift */; };
 		02B699B121ECED1500C7CBCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B699B021ECED1500C7CBCD /* AppDelegate.swift */; };
 		02B699B821ECED1700C7CBCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B699B721ECED1700C7CBCD /* Assets.xcassets */; };
 		02B699BB21ECED1700C7CBCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02B699B921ECED1700C7CBCD /* LaunchScreen.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0211EE9C21F49822005C381C /* CoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewController.swift; sourceTree = "<group>"; };
 		02B699AD21ECED1500C7CBCD /* Crypto Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B699B021ECED1500C7CBCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02B699B721ECED1700C7CBCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				02B699B021ECED1500C7CBCD /* AppDelegate.swift */,
 				02B699C421ECEF0D00C7CBCD /* CoinData.swift */,
 				02B699C221ECED8E00C7CBCD /* CryptoTableViewController.swift */,
+				0211EE9C21F49822005C381C /* CoinViewController.swift */,
 				02B699B721ECED1700C7CBCD /* Assets.xcassets */,
 				02B699B921ECED1700C7CBCD /* LaunchScreen.storyboard */,
 				02B699BC21ECED1700C7CBCD /* Info.plist */,
@@ -188,12 +191,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Crypto Tracker/Pods-Crypto Tracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftChart.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -210,6 +215,7 @@
 				02B699C521ECEF0D00C7CBCD /* CoinData.swift in Sources */,
 				02B699C321ECED8E00C7CBCD /* CryptoTableViewController.swift in Sources */,
 				02B699B121ECED1500C7CBCD /* AppDelegate.swift in Sources */,
+				0211EE9D21F49822005C381C /* CoinViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
