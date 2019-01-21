@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 private let headerHeight: CGFloat = 100.0
 private let netWorthHeight: CGFloat = 45.0
@@ -20,8 +21,48 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
         CoinData.shared.delegate = self
         CoinData.shared.getPrices()
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Report", style: .plain, target: self, action: #selector(reportTaped))
+        if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+            updateSecureButton()
+        }
+        
     }
     
+    func updateSecureButton() {
+        if UserDefaults.standard.bool(forKey: "secure") {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Unsecure App", style: .plain, target: self, action: #selector(secureTapped))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Secure App", style: .plain, target: self, action: #selector(secureTapped))
+        }
+        
+    }
+    
+    @objc func secureTapped () {
+        if UserDefaults.standard.bool(forKey: "secure") {
+            UserDefaults.standard.set(false, forKey: "secure")
+        } else {
+            UserDefaults.standard.set(true, forKey: "secure")
+        }
+        updateSecureButton()
+    }
+    
+    @objc func reportTaped () {
+        let formatter = UIMarkupTextPrintFormatter(markupText: CoinData.shared.html())
+        let render = UIPrintPageRenderer()
+        render.addPrintFormatter(formatter, startingAtPageAt: 0)
+        let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8)
+        render.setValue(page, forKey: "paperRect")
+        render.setValue(page, forKey: "printableRect")
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, .zero, nil)
+        for i in 0..<render.numberOfPages {
+            UIGraphicsBeginPDFPage()
+            render.drawPage(at: i, in: UIGraphicsGetPDFContextBounds())
+        }
+        UIGraphicsEndPDFContext()
+        let shareVC = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
+        present(shareVC, animated: true, completion: nil)
+    }
     
     
     func newPrices() {
