@@ -73,9 +73,8 @@ class CryptoTableViewController: UITableViewController, CoinDataDelegate {
     func createHeaderView() -> UIView {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: headerHeight))
         headerView.backgroundColor = UIColor.white
-        let networthLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.height, height: netWorthHeight))
-        
-        networthLabel.text = "My Crypto Net Worth:"
+        let networthLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: netWorthHeight))
+        networthLabel.text = "My Crypto Net Worth"
         networthLabel.textAlignment = .center
         headerView.addSubview(networthLabel)
         
