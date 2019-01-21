@@ -59,6 +59,7 @@ class CoinData {
                     if let coinJson = json[coin.symbol] as? [String:Double]{
                         if let price = coinJson["USD"] {
                             coin.price = price
+                            UserDefaults.standard.set(price, forKey: coin.symbol)
                         }
                     }
                 }
@@ -98,6 +99,12 @@ class Coin {
         if let image = UIImage(named: symbol) {
             self.image = image
         }
+        self.price = UserDefaults.standard.double(forKey: symbol)
+        self.amount = UserDefaults.standard.double(forKey: symbol + "amount")
+        
+        if let history = UserDefaults.standard.array(forKey: symbol + "history") as? [Double] {
+            self.historicalData = history
+        }
     }
     
     func getHistoricalData() {
@@ -113,6 +120,7 @@ class Coin {
                         }
                     }
                     CoinData.shared.delegate?.newHistory!()
+                    UserDefaults.standard.set(self.historicalData, forKey: self.symbol + "history")
                 }
                 
             }
